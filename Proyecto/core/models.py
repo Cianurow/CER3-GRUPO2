@@ -19,19 +19,11 @@ class Padre(models.Model):
     primerapellido = models.CharField(max_length=30,null=False,blank=False)
     segundoapellido = models.CharField(max_length=30,null=True,blank=True)
     correo = models.EmailField(null=False,blank=False)
-    telefono = models.IntegerField(null=False,blank=False)
+    telefono = models.CharField(max_length=30,null=False,blank=False)
     contraseña = models.CharField(max_length=15,null=False)
 
     def __str__(self) -> str:
         return "%s %s" % (self.nombre,self.primerapellido)
-
-class Usuario(models.Model):
-    contraseña = models.CharField( max_length=30,null=False,blank=False)
-    fecha_entrega = models.DateField(auto_now=True,null=False,blank=False)
-    usuario = models.OneToOneField(Padre,on_delete=models.CASCADE,null=False,blank=False)
-
-    def __str__(self) -> str:
-        return "%s, %s" % (self.usuario.nombre,self.usuario.correo)
 
 altas = [("Fallecimiento","Fallecimiento"),("Traslado","Traslado"),("Retorno a Hogar","Retorno a Hogar")]
 
