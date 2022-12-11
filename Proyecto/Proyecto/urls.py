@@ -24,4 +24,5 @@ urlpatterns = [
     path('sesionmatrona/', views.sesionmatrona, name="sesionmatrona"),
     path('padre/', views.padre, name="padre"),
     path('matrona/', views.matrona, name="matrona"),
+    path('seguimiento/', views.seguimiento, name="seguimiento"),
 ]

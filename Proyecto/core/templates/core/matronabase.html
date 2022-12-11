@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/estilos1.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos2.css' %}">
     <title>Neonatología</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
             </div>
             <div class="col-7 bg-usuario">
                 {% for matronas in matronas %}
-                    {{matronas.nombre}} {{matronas.primerapellido}} {{matronas.segundoapellido}} | {{matronas.cargo}}
+                    {{matronas}}
                 {% endfor %}
             </div>
             <div class="col-2"></div>

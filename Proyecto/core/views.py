@@ -40,6 +40,12 @@ def matrona(request, matronas):
 
 @login_required
 def padre(request, padres):
-    reciennacido = RecienNacido.objects.all()
+    for padre in padres:
+        if RecienNacido.objects.filter(padres = padre):
+            reciennacido = RecienNacido.objects.filter(padres = padre)
+
     return render(request, 'core/padre.html', {'reciennacido':reciennacido, 'padres':padres})  
 
+@login_required
+def seguimiento (request):
+    return render(request, 'core/seguimiento.html')
