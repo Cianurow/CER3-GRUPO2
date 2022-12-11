@@ -1,9 +1,17 @@
-@import url('core/img/´portada.jpg');
-
-
 .bg-banner {
     text-align: right;
     padding-right: 0;
+}
+
+.bg-usuario {
+    font-family: "Roboto";
+    font-size: 50px;
+    text-align: right;
+    padding-top: 20px;
+}
+
+.bg-cafe {
+    background-color: #ebe1c9;
 }
 
 #home {
@@ -42,6 +50,11 @@
     padding-top: 80px;
 }
 
+.bg-boton {
+    text-align: center;
+    padding-top: 20px;
+}
+
 .btn-iniciar-sesion {
     color: white;
     font-size: 22px;
@@ -63,6 +76,22 @@
     font-size: 22px;
     font-family: "Roboto";
     background-color: #e22c2c;
+    width: 130px;
+}
+
+.btn-seguimiento {
+    color: white;
+    font-size: 22px;
+    font-family: "Roboto";
+    background-color: #0f69b4;
+    width: 130px;
+}
+
+.btn-alta{
+    color: white;
+    font-size: 22px;
+    font-family: "Roboto";
+    background-color: #ff8000;
     width: 130px;
 }
 

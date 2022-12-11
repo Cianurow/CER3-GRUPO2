@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from .models import Matrona
 from .models import RecienNacido
+from .models import Padre
 from django.contrib.auth.decorators import login_required
 
 
@@ -13,6 +14,13 @@ def home(request):
     return render(request, 'core/index.html')
 
 def sesionpadre(request):
+    queryset = request.GET.get("usuario")
+    queryset1 = request.GET.get("contraseña")
+    padres = Padre.objects.all()
+    if Padre.objects.filter(run = queryset):
+        if Padre.objects.filter(contraseña = queryset1):
+            padres = Padre.objects.filter(run = queryset) 
+            return padre(request, padres)
     return render(request, 'core/sesionpadre.html')
 
 def sesionmatrona(request):
@@ -22,26 +30,16 @@ def sesionmatrona(request):
     if Matrona.objects.filter(run = queryset):
         if Matrona.objects.filter(contraseña = queryset1):
             matronas = Matrona.objects.filter(run = queryset) 
-            return render(request, 'core/matrona.html', {'matronas':matronas})   
+            return matrona(request, matronas)    
     return render(request, 'core/sesionmatrona.html')  
 
-def padre(request):
-    return render(request, 'core/padre.html')
+@login_required
+def matrona(request, matronas):
+    reciennacido = RecienNacido.objects.all().order_by('fecha_nacimiento')
+    return render(request, 'core/matrona.html', {'reciennacido':reciennacido, 'matronas':matronas})    
 
 @login_required
-def matrona(request):
-    reciennacido = RecienNacido.objects.all().order_by('fecha_nacimiento')
-    return render(request, 'core/matrona.html', {'reciennacido':reciennacido})    
+def padre(request, padres):
+    reciennacido = RecienNacido.objects.all()
+    return render(request, 'core/padre.html', {'reciennacido':reciennacido, 'padres':padres})  
 
-
-
-"""
-def home(request):
-    queryset = request.GET.get("buscar")
-    correspondencias = Correspondencia.objects.all().order_by('nroResidencia')
-    if queryset:
-        if Correspondencia.objects.filter(nroResidencia = queryset):
-            correspondencias = Correspondencia.objects.filter(nroResidencia = queryset)    
-    
-    return render(request, 'core/index.html', {'correspondencias':correspondencias})
-"""

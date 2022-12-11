@@ -48,9 +48,9 @@ class RecienNacido (models.Model):
     tipo_alta = models.CharField(max_length=20,null=True,blank=True,choices=altas)
     fecha_alta = models.DateField(auto_now=True,null=True,blank=True)
     padres = models.ForeignKey(Padre,on_delete=models.RESTRICT)
-    
+
     def __str__(self) -> str:
-        return "%s %s, %s" % (self.nombre,self.primerapellido,self.sexo) 
+        return "%s %s, %s" % (self.nombre,self.primerapellido,self.sexo)  
 
 class Seguimiento(models.Model):
     peso_diario = models.IntegerField(null=False,blank=False)

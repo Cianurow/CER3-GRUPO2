@@ -12,37 +12,48 @@
 <body>
     <div id="navinicio" class="container-fluid">
         <div class="row">
-            <div class="col-1 bg-red"></div>
-            <div class="col-1 bg-blue">
+            <div class="col-1"></div>
+            <div class="col-1">
                 <img src={% static 'core/img/logo-pequeño.png' %}>
             </div>
             <div class="col-1 bg-header">
                 <p class="letra">Hospital Dr. <br>
                     Gustavo Fricke <br> Área pediatrica  <br> y neonatología</p>
             </div>
-            <div class="col-8 bg-red ">
-                <p>NOMBRE APELLIDO APELLIDO2</p>
+            <div class="col-7 bg-usuario">
+                {% for padres in padres %}
+                    {{padres.nombre}} {{padres.primerapellido}} {{padres.segundoapellido}}
+                {% endfor %}
             </div>
-            <div class="col-1 bg-blue"></div>
+            <div class="col-1"></div>
+            <div class="col-1"></div>
         </div>
-      </div>
-
+    
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Opciones
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'home' %}">Cerrar Sesión</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+   
     {% block content %}
 
     {% endblock %}
+    </div>
 
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <hr>
-                    <p class="texto">Servicio de contacto:</p>
-                    <p class="texto">Nro fijo:(32)257 7603 <br>Av. Alvarez 1532, Viña del Mar, Valparaiso</p>
-                </div>
-                <div class="col-1"></div>
-            </div>
-        </div>
-    </footer>
+    <link rel="stylesheet" href={% static 'core/js/bootstrap.js' %}>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
