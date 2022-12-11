@@ -1,11 +1,13 @@
 from django.db import models
 
+
 class Matrona (models.Model):
     nombre = models.CharField(max_length=30,null=False,blank=False)
     primerapellido = models.CharField(max_length=30,null=False,blank=False)
     segundoapellido = models.CharField(max_length=30,null=True,blank=True)
     cargo = models.CharField(max_length=20,null=False,blank=False,choices=[("Matrona Jefe","Matrona Jefe"),("Matrona General","Matrona General")])
     run = models.CharField(max_length=10,null=False,blank=False)
+    contraseña = models.CharField(max_length=15,null=False)
 
     def __str__(self) -> str:
         return "%s %s, %s" % (self.nombre, self.primerapellido, self.cargo)
@@ -18,6 +20,7 @@ class Padre(models.Model):
     segundoapellido = models.CharField(max_length=30,null=True,blank=True)
     correo = models.EmailField(null=False,blank=False)
     telefono = models.IntegerField(null=False,blank=False)
+    contraseña = models.CharField(max_length=15,null=False)
 
     def __str__(self) -> str:
         return "%s %s" % (self.nombre,self.primerapellido)
@@ -45,7 +48,7 @@ class RecienNacido (models.Model):
     tipo_alta = models.CharField(max_length=20,null=True,blank=True,choices=altas)
     fecha_alta = models.DateField(auto_now=True,null=True,blank=True)
     padres = models.ForeignKey(Padre,on_delete=models.RESTRICT)
-
+    
     def __str__(self) -> str:
         return "%s %s, %s" % (self.nombre,self.primerapellido,self.sexo) 
 

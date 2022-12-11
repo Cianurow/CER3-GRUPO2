@@ -1,0 +1,39 @@
+{% extends 'core/matronabase.html' %}
+
+{% block content %}
+    <div class="containter-fluid">
+        <div id="reciennacido" class="row">
+            <div class="col-2"> </div>
+            <div class="col-8">
+              <div class="row" style="display: flex;">
+                
+              {% for reciennacido in reciennacido %}
+      
+              
+                <div class="col-md-auto" style="width: 50%;">
+                  <div class="card mb-3 caja">
+                    
+                    <div class="card-header">
+                      <h5 class="card-title">Recien Nacido: {{ reciennacido.nombre }}</h5>
+                    </div>
+                    <div class="row col-md">
+                      <div class="col-md-6">
+                        <div class="card-body informacion">
+                            <p class="card-text"> Remitente: {{ reciennacido.fecha_nacimiento }}</p>                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <p>HOLA</p>
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+      
+            <div class="col-2"></div>
+
+    </div>
+{% endblock %}

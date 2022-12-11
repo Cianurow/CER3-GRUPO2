@@ -1,0 +1,51 @@
+{% extends 'core/padrebase.html' %}
+
+{% block content %}
+    <div class="containter-fluid">
+        <div id="correspondencia" class="row">
+            <div class="col-2"> </div>
+            <div class="col-8">
+              <div class="row" style="display: flex;">
+              {% for correspondencia in correspondencias %}
+      
+              
+                <div class="col-md-auto" style="width: 50%;">
+                  <div class="card mb-3 caja">
+                    
+                    <div class="card-header">
+                      <h5 class="card-title">Correspondencia para: {{ correspondencia.destinatario }}</h5>
+                    </div>
+                    <div class="row col-md">
+                      <div class="col-md-6">
+                        <div class="card-body informacion">
+                            <p class="card-text"> Remitente: {{ correspondencia.remitente }}</p>
+                            
+                            {% if correspondencia.estado == 'P' %}
+                              <p style="color: yellow;">Estado: Pendiente</p>
+                            {% else %}
+                              <p style="color: rgb(76, 255, 67);">Estado: Entregado</p> 
+                            {% endif %}
+      
+                            <p>Residencia: {{ correspondencia.nroResidencia }}</p>
+                            <p class="card-text"><small class="">Recepcionado por {{correspondencia.conserje}} <br>
+                              la fecha {{ correspondencia.fechaRecepcion }}</small></p>
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6 iconbox">
+                        {% load static %}
+                        <link rel="stylesheet" href={% static 'core/img/box-96.png' %}>
+                        <img src={% static 'core/img/box-96.png' %} class="box" alt="caja">
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+      
+            <div class="col-2"></div>
+
+    </div>
+{% endblock %}
