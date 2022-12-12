@@ -77,5 +77,4 @@ def seguimientopadre (request, id):
     if id:
 
         seguimientos = Seguimiento.objects.filter(recien_nacido = id)
-        return render(request, 'core/seguimiento.html', {'seguimientos':seguimientos})
-    return render(request, 'core/seguimiento.html', {'seguimientos':seguimientos})    
+        return render(request, 'core/seguimientopadre.html', {'seguimientos':seguimientos}) 
