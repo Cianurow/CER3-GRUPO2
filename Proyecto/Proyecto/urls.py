@@ -30,6 +30,6 @@ urlpatterns = [
     path('seguimiento/<int:id>', views.seguimiento, name="seguimiento"),
     path('seguimientopadre/<int:id>', views.seguimientopadre, name="seguimientopadre"),
     path('alta/', views.alta, name="alta"),
-    path('api/',include(router_seguimiento.urls)),
+    path('api/',include(router_seguimiento.urls), name="api"),
 
 ]
