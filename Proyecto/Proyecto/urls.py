@@ -14,9 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from core import views
-
+from core.api.router import router_seguimiento
 
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('seguimiento/<int:id>', views.seguimiento, name="seguimiento"),
     path('seguimientopadre/<int:id>', views.seguimientopadre, name="seguimientopadre"),
     path('alta/', views.alta, name="alta"),
+    path('api/',include(router_seguimiento.urls)),
 
 ]
