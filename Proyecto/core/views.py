@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import Matrona
 from .models import RecienNacido
 from .models import Padre
+from .models import Seguimiento
 from django.contrib.auth.decorators import login_required
 
 
@@ -30,22 +31,51 @@ def sesionmatrona(request):
     if Matrona.objects.filter(run = queryset):
         if Matrona.objects.filter(contraseña = queryset1):
             matronas = Matrona.objects.filter(run = queryset) 
-            return matrona(request, matronas)    
+            return matrona(request)    
     return render(request, 'core/sesionmatrona.html')  
 
 @login_required
-def matrona(request, matronas):
+def matrona(request):
     reciennacido = RecienNacido.objects.all().order_by('fecha_nacimiento')
-    return render(request, 'core/matrona.html', {'reciennacido':reciennacido, 'matronas':matronas})    
+    seguimientos = Seguimiento.objects.all()
+    return render(request, 'core/matrona.html', {'reciennacido':reciennacido, 'seguimientos':seguimientos})    
+
+@login_required
+def alta(request):
+    reciennacido = RecienNacido.objects.all().order_by('fecha_nacimiento')
+    seguimientos = Seguimiento.objects.all()
+    return render(request, 'core/alta.html', {'reciennacido':reciennacido, 'seguimientos':seguimientos})   
+
 
 @login_required
 def padre(request, padres):
     for padre in padres:
         if RecienNacido.objects.filter(padres = padre):
             reciennacido = RecienNacido.objects.filter(padres = padre)
-
     return render(request, 'core/padre.html', {'reciennacido':reciennacido, 'padres':padres})  
 
+
+
 @login_required
-def seguimiento (request):
-    return render(request, 'core/seguimiento.html')
+def seguimiento (request, id):
+
+    seguimientos = Seguimiento.objects.all()
+    reciennacido = RecienNacido.objects.filter(id = id)
+    if id:
+
+        seguimientos = Seguimiento.objects.filter(recien_nacido = id)
+        return render(request, 'core/seguimiento.html', {'seguimientos':seguimientos})
+
+   
+    return render(request, 'core/seguimiento.html', {'seguimientos':seguimientos})
+
+@login_required
+def seguimientopadre (request, id):
+
+    seguimientos = Seguimiento.objects.all()
+    reciennacido = RecienNacido.objects.filter(id = id)
+    if id:
+
+        seguimientos = Seguimiento.objects.filter(recien_nacido = id)
+        return render(request, 'core/seguimiento.html', {'seguimientos':seguimientos})
+    return render(request, 'core/seguimiento.html', {'seguimientos':seguimientos})    

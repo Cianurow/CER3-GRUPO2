@@ -13,12 +13,11 @@
                       <div class="col-md-6">
                         <div class="card-body informacion">
                             <p class="card-title">Recien Nacido: {{ reciennacido.nombre }} {{reciennacido.primerapellido}}</p>
-                            <p class="card-text"> Fecha nacimiento: {{ reciennacido.fecha_nacimiento }}</p>
-                            <p class="card-text"> F: {{ reciennacido.padres }}</p>                             
+                            <p class="card-text"> Fecha nacimiento: {{ reciennacido.fecha_nacimiento }}</p>                           
                         </div>
                       </div>
                       <div class="col-md-6 bg-boton">
-                        <a class="btn btn-seguimiento btn-primary" href="{% url 'home' %}" role="button">Visualizar</a>
+                        <a class="btn btn-seguimiento btn-primary" href="{% url 'seguimiento' reciennacido.id %}" role="button">Visualizar</a>
                       </div>
                     </div>
                   

@@ -1,0 +1,39 @@
+{% extends 'core/matronabase.html' %}
+
+{% block content %}
+
+        <div id="reciennacido" class="row">
+            <div class="col-2"> </div>
+            <div class="col-8">
+              <div class="row" style="display: flex;">
+
+              {% for reciennacido in reciennacido %}
+                
+                {% if reciennacido.tipo_alta is not NULL %}
+                    <div class="col-md-auto" style="width: 100%;">
+                    <div class="card mb-3 bg-cafe">                    
+                        <div class="row col-md">
+                        <div class="col-md-6">
+                            <div class="card-body informacion">
+                                <p class="card-title">Recien Nacido: {{ reciennacido.nombre }} {{reciennacido.primerapellido}}</p>
+                                <p class="card-text"> Fecha nacimiento: {{ reciennacido.fecha_nacimiento }}</p>    
+                                <p class="card-text"> Tipo de Alta: {{ reciennacido.tipo_alta }}</p>                        
+                            </div>
+                        </div>
+                        <div class="col-md-6 bg-boton">
+                        
+                            <a class="btn btn-seguimiento btn-primary" href="{% url 'seguimiento' reciennacido.id %}" role="button">Visualizar</a>
+                        </div>
+                        </div>
+                    
+                    </div>
+                    </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+            </div>
+      
+            <div class="col-2"></div>
+
+    
+{% endblock %}

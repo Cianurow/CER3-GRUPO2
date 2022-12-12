@@ -21,9 +21,7 @@
                     Gustavo Fricke <br> Área pediatrica  <br> y neonatología</p>
             </div>
             <div class="col-7 bg-usuario">
-                {% for matronas in matronas %}
-                    {{matronas}}
-                {% endfor %}
+               
             </div>
             <div class="col-2"></div>
         </div>
@@ -38,10 +36,10 @@
                       Opciones
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Seguimientos</a></li>
-                      <li><a class="dropdown-item" href="#">Visualizar usuarios regitrados</a></li>
-                      <li><a class="dropdown-item" href="#">Historial de altas</a></li>
-                      <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                      <li><a class="dropdown-item" href="{% url 'matrona' %}">Seguimientos</a></li>
+                      <li><a class="dropdown-item" href="{%url 'admin:index' %}">Visualizar usuarios regitrados</a></li>
+                      <li><a class="dropdown-item" href="{% url 'alta' %}">Historial de altas</a></li>
+                      <li><a class="dropdown-item" href="{% url 'home' %}">Cerrar sesión</a></li>
                     </ul>
                   </div>
             </div>

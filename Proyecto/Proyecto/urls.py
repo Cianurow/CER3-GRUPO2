@@ -17,12 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from core import views
 
+
+
 urlpatterns = [
+        
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('sesionpadre/', views.sesionpadre, name="sesionpadre"),
     path('sesionmatrona/', views.sesionmatrona, name="sesionmatrona"),
     path('padre/', views.padre, name="padre"),
     path('matrona/', views.matrona, name="matrona"),
-    path('seguimiento/', views.seguimiento, name="seguimiento"),
+    path('seguimiento/<int:id>', views.seguimiento, name="seguimiento"),
+    path('seguimientopadre/<int:id>', views.seguimientopadre, name="seguimientopadre"),
+    path('alta/', views.alta, name="alta"),
+
 ]
